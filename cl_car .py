@@ -66,7 +66,7 @@ import car_make
 print (title_split) # print new list 
 print (post_one_link) # print full url of post
 
-x = car_make.no_int(title_split)
+x = car_make.remove_digit(title_split)
 
 print car_make.cars(x)
 
