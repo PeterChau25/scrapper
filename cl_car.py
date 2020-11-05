@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[15]:
+# In[1]:
 
 
 #import get to call a get request on the site
@@ -20,14 +20,14 @@ print(type(posts)) #to double check that I got a ResultSet
 print(len(posts)) #to double check I got 120 (elements/page)
 
 
-# In[16]:
+# In[2]:
 
 
 #grab the first post
 post_one = posts[0]
 
 
-# In[17]:
+# In[3]:
 
 
 #grab the price of the first post
@@ -35,7 +35,7 @@ post_one_price = post_one.a.text
 post_one_price.strip()
 
 
-# In[18]:
+# In[4]:
 
 
 #grab the time and datetime it was posted
@@ -45,7 +45,7 @@ post_one_datetime = post_one_time['datetime']
 print (post_one_time['datetime'])
 
 
-# In[19]:
+# In[5]:
 
 
 #title is a and that class, link is grabbing the href attribute of that variable
@@ -58,7 +58,7 @@ post_one_title_text = post_one_title.text
 title_split = post_one_title.text.split() # split title by space makes in list
 
 
-# In[21]:
+# In[7]:
 
 
 import car_make
@@ -69,13 +69,12 @@ y = [p.capitalize() for p in y]
 
 print (y)
 
+make_of_car_in_title = car_make.check_make(y,y)
 
-k = car_make.check_make(y,y)
-
-print (k)
+print (make_of_car_in_title)
 
 
-# In[74]:
+# In[8]:
 
 
 print (post_one)
