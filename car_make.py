@@ -70,9 +70,9 @@ def remove_digit(input):
     input = [x for x in b if not(x.isdigit()                 
             or x[0] == '-' and x[1:].isdigit())] #removes any digits in strings 
 
-    no_int = [p.capitalize() for p in no_int] # capitalize first letter of string to match up against car make list
+    input = [p.capitalize() for p in no_int] # capitalize first letter of string to match up against car make list
 
-return no_int
+return input
 
 # print (no_int) # confirms list
 
