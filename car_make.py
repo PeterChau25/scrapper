@@ -71,7 +71,7 @@ def remove_digit(input):
     y = [p.capitalize() for p in no_int] # capitalize first letter of string to match up against car make list    
 return y
 
-def car_make(input):
+def car_make(input, car_make):
     xx = [i for i in car_make]
         for i in xx: 
            if i in car_make: 
