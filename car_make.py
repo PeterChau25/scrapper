@@ -67,25 +67,12 @@ car_make = {
 
 def remove_digit(input):
 #print(b) # confirms list 
-    input = [x for x in b if not(x.isdigit()                 
-            or x[0] == '-' and x[1:].isdigit())] #removes any digits in strings 
-
+    input = [x for x in b if not(x.isdigit() or x[0] == '-' and x[1:].isdigit())] #removes any digits in strings 
     input = [p.capitalize() for p in no_int] # capitalize first letter of string to match up against car make list
-
 return input
 
-# print (no_int) # confirms list
-
 def car_make(input):
-    
     input = [i for i in car_make]
         for i in no_int: 
-            if i in cars: 
+           if i in cars: 
             return i
-
-
-# In[ ]:
-
-
-
-
