@@ -65,7 +65,8 @@ car_make = {
   "Volvo":  "Volvo"
 }
 
-def 
+def remove_digit
+
 #print(b) # confirms list 
 
 no_int = [x for x in b if not(x.isdigit()                 
