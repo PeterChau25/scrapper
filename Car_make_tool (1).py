@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # In[32]:
-
+import cl_car
 
 car_make = {
   "Abarth": "Abarth",
