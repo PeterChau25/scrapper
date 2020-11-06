@@ -73,8 +73,10 @@ make_of_car_in_title = car_make.check_make(y)
 
 print (make_of_car_in_title)
 
+import car_year_extract
+car_year = car_year_extract.car_year_extractor(title_split)
 
-# In[17]:
+print(car_year)
 
 
 #build out the loop
