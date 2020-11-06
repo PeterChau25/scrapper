@@ -104,68 +104,51 @@ post_links = []
 post_prices = []
 
 
-for page in pages:
-    
-    #get request
-    response = get("https://sfbay.craigslist.org/search/eby/cto?" 
-                   + "s=" #the parameter for defining the page number 
-                   + str(page) #the page number in the pages array from earlier
-                   + "&hasPic=1")
-
-    sleep(randint(1,5))
-     
-    #throw warning for status codes that are not 200
-    if response.status_code != 200:
-        warn('Request: {}; Status code: {}'.format(requests, response.status_code))
-        
-    #define the html text
-    page_html = BeautifulSoup(response.text, 'html.parser')
-    
-    #define the posts
-    posts = html_soup.find_all('li', class_= 'result-row')
-        
-    #extract data item-wise
-    for post in posts:
-
-        if post.find('span', class_ = 'result-hood') is not None:
-
-            #posting date
-            #grab the datetime element 0 for date and 1 for time
-            post_datetime = post.find('time', class_= 'result-date')['datetime']
-            post_timing.append(post_datetime)
-
-            #neighborhoods
-            post_hood = post.find('span', class_= 'result-hood').text
-            post_hoods.append(post_hood)
-
-            #title text
-            post_title = post.find('a', class_='result-title hdrlnk')
-            post_title_text = post_title.text
-            post_title_texts.append(post_title_text)
-       
-            splits = post_title.text.split()  
-        
-            #car make 
-            import car_make
-            parser = splits
-            parser = [x for x in parser if not(x.isdigit() or x[0] == '-' and x[1:].isdigit())]
-            parser = [p.capitalize() for p in parser]
-            
-            make_of_car_in_title = str(car_make.check_make(parser))
-            car_makes.append(make_of_car_in_title)   
-            
-            #post link
-            post_link = post_title['href']
-            post_links.append(post_link)
-            
-            #removes the \n whitespace from each side, removes the currency symbol, and turns it into an int
-            post_price = int(post.a.text.strip().replace("$", "").replace(",","")) 
-            post_prices.append(post_price)
-                  
-    iterations += 1
-    print("Page " + str(iterations) + " scraped successfully!")
-
-print("\n")
+for page in pages:    
+  #get request
+  response = get("https://sfbay.craigslist.org/search/eby/cto?" 
+                 + "s=" #the parameter for defining the page number 
+                 + str(page) #the page number in the pages array from earlier
+                 + "&hasPic=1")
+  sleep(randint(1,5))     
+  #throw warning for status codes that are not 200
+  if response.status_code != 200:
+      warn('Request: {}; Status code: {}'.format(requests, response.status_code))        
+  #define the html text
+  page_html = BeautifulSoup(response.text, 'html.parser')    
+  #define the posts
+  posts = html_soup.find_all('li', class_= 'result-row')        
+  #extract data item-wise
+  for post in posts:
+      if post.find('span', class_ = 'result-hood') is not None:
+          #posting date
+          #grab the datetime element 0 for date and 1 for time
+          post_datetime = post.find('time', class_= 'result-date')['datetime']
+          post_timing.append(post_datetime)
+          #neighborhoods
+          post_hood = post.find('span', class_= 'result-hood').text
+          post_hoods.append(post_hood)
+          #title text
+          post_title = post.find('a', class_='result-title hdrlnk')
+          post_title_text = post_title.text
+          post_title_texts.append(post_title_text)
+          splits = post_title.text.split()  
+          #car make 
+          import car_make
+          parser = splits
+          parser = [x for x in parser if not(x.isdigit() or x[0] == '-' and x[1:].isdigit())]
+          parser = [p.capitalize() for p in parser]
+          make_of_car_in_title = str(car_make.check_make(parser))
+          car_makes.append(make_of_car_in_title)   
+          #post link
+          post_link = post_title['href']
+          post_links.append(post_link)
+          #removes the \n whitespace from each side, removes the currency symbol, and turns it into an int
+          post_price = int(post.a.text.strip().replace("$", "").replace(",","")) 
+          post_prices.append(post_price)
+  iterations += 1
+  print("Page " + str(iterations) + " scraped successfully!")
+  print("\n")
 
 print("Scrape complete!")
 
