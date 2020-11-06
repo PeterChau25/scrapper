@@ -161,7 +161,7 @@ import pandas as pd
 eb_apts = pd.DataFrame({'posted': post_timing,
                        'neighborhood': post_hoods,
                        'post title': post_title_texts,
-                        'Make' : car_make,
+                        'Make' : car_makes,
                         'URL': post_links,
                        'price': post_prices})
 print(eb_apts.info())
