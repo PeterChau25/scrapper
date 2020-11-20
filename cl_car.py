@@ -132,7 +132,7 @@ for page in pages:
     page_html = BeautifulSoup(response.text, 'html.parser')
     
     #define the posts
-    posts = html_soup.find_all('li', class_= 'result-row')
+    posts = page_html.find_all('li', class_= 'result-row')
         
     #extract data item-wise
     for post in posts:
